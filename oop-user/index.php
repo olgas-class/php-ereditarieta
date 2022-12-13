@@ -17,5 +17,5 @@ $premiumUser = new PremiumUser("Giuseppe", "Bianchi", new Membership("Platinum",
 $premiumUser->setAge(50);
 $premiumUser->setDiscount();
 
-
+$premiumUser->setPosition("12.345", "45.123");
 var_dump($premiumUser);

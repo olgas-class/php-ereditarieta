@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . "/EmailNotification.php";
+require_once __DIR__ . "/../Traits/Notifiable.php";
+
 /**
  * ## class User
  * Defines User class
@@ -10,6 +13,8 @@ class User {
     public $lastname;
     private $age;
     protected $discount;
+
+    use Notifiable;
 
     /**
      * @param string $name
@@ -38,6 +43,9 @@ class User {
         } else {
             $this->discount = 0;
         }
+
+        $this->setNotification(new EmailNotification());
+        $this->send($this->name, "Il tuo sconto è $this->discount");
     }
 
     public function getDiscount() {

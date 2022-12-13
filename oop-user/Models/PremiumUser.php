@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/User.php";
+require_once __DIR__ . "/../Traits/Position.php";
 
 /**
  * ## class Premium User
@@ -8,6 +9,8 @@ require_once __DIR__ . "/User.php";
  */
 class PremiumUser extends User {
     public $membership;
+
+    use Position;
 
     /**
      * @param mixed $name
@@ -28,5 +31,10 @@ class PremiumUser extends User {
         } else {
             $this->discount = 20;
         }
+    }
+
+    public function setPosition($lat, $long) {
+        $this->lat = $lat;
+        $this->long = $long;
     }
 }
